@@ -1,0 +1,45 @@
+.card {
+  margin: 2rem;
+  background-color: rgb(18, 18, 18);
+  color: rgb(255, 255, 255);
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-radius: 4px;
+  box-shadow: rgb(0 0 0 / 20%) 0px 2px 1px -1px,
+    rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px;
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.05)
+  );
+  overflow: hidden;
+  max-width: 400px;
+  min-width: 275px;
+  display: flex;
+  flex-flow: column wrap;
+}
+.card .card-header {
+  display: flex;
+  flex-flow: column wrap;
+}
+.card .card-img {
+  width: 350px;
+  height: 350px;
+}
+.card .card-title {
+  padding: 0.4rem 0;
+}
+
+.card .card-body {
+  padding: 0.4rem;
+  display: flex;
+  flex-flow: column wrap;
+}
+.card .card-body .card-sub {
+  color: #7f8e9d;
+}
+.card .card-body .card-details {
+  padding: 0.4rem 0rem;
+}
+
+.card-button {
+  width: 100%;
+}

@@ -1,0 +1,25 @@
+.home {
+  display: flex;
+  flex-flow: column wrap;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.home-header {
+  background: linear-gradient(
+    to right,
+    #f64f59,
+    #c471ed,
+    #12c2e9
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.home-p {
+  color: #fff;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 1rem;
+}

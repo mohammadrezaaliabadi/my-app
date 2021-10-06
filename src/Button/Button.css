@@ -1,0 +1,16 @@
+.btn {
+  width: auto;
+  height: auto;
+  background-color: rgb(18, 18, 18);
+  color: #fff;
+  border: #7f8e9d 1px solid;
+  border-radius: 0.3rem;
+  box-shadow: inset 0rem 0rem 0.2rem 0.1rem rgb(256, 256, 256, 0.3),
+    0rem 0rem 0.2rem 0.1rem rgb(256, 256, 256, 0.3);
+  padding: 0.5rem;
+  transition: 0.2s ease-in;
+}
+.btn:hover,
+.btn:active {
+  background-color: rebeccapurple;
+}
