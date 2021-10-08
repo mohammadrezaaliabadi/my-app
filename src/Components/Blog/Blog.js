@@ -7,10 +7,10 @@ const Blog = ({ blog }) => {
   const handleClickButton = () => {
     setCount(count + 1);
   };
+
   return (
     <div className="blog">
       <h2 className="blog-title">{blog.title}</h2>
-      <h5 className="blog-title-description">{blog.titleDes}</h5>
       <img className="blog-img" src={blog.image} alt="" srcset="" />
       <h3 className="blog-subject">
         <span style={{ color: 'red' }}>♥</span> {count}

@@ -1,7 +1,9 @@
 import './Contact.css';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Button from '../Button/Button';
 import Modal from '../Modal/Modal';
+import { useContext, useEffect } from 'react/cjs/react.development';
+import ThemeContext from '../../Context/ThemeContext';
 const validateEmail = email => {
   var re =
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -14,6 +16,9 @@ const Contact = () => {
   const [description, setDescription] = useState('');
   const [errors, setErrors] = useState({});
   const [classNameModal, setClassNameModal] = useState('hidden');
+  const inputNameRef = useRef(null);
+
+  const themeValues = useContext(ThemeContext);
   const handleChangeInputName = event => {
     setName(event.target.value);
   };
@@ -42,17 +47,18 @@ const Contact = () => {
   const handleCloseModal = () => {
     setClassNameModal('hidden');
   };
+  useEffect(() => {
+    inputNameRef.current.focus();
+  }, []);
 
   return (
-    <div>
-      <div className="header-container">
-        <h1 className="main-header">Blogs</h1>
-      </div>
-      <div className="contact">
+    <>
+      <div className={`contact ${themeValues.theme.className}`}>
         <img class="contact-img" src="a.png" alt="" />
         <div class="contact-title">Send message For me😉</div>
         <div class="contact-group">
           <input
+            ref={inputNameRef}
             class="contact-input"
             type="text"
             id="name"
@@ -121,7 +127,7 @@ const Contact = () => {
         </div>
         <Button handleClick={handleCloseModal}>Close!</Button>
       </Modal>
-    </div>
+    </>
   );
 };
 

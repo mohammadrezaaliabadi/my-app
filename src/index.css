@@ -65,3 +65,15 @@ code {
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   height: 24rem;
 }
+
+.light {
+  color: #000000;
+  background-color: #eeeeee;
+  transition: ease-in-out all 0.5s;
+}
+
+.dark {
+  color: #ffffff;
+  background-color: #222222;
+  transition: ease-in-out all 0.5s;
+}
