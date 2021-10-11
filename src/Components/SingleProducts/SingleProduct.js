@@ -1,19 +1,12 @@
 import { useContext } from 'react';
-import CartContext from '../../Context/CartContext';
 import { MdAdd, MdRemoveShoppingCart } from 'react-icons/md';
+import { useParams } from 'react-router-dom';
+import CartContext from '../../Context/CartContext';
+import PRODUCTS from '../App/PRODUCTS.json';
 import Button from '../Button/Button';
-import './ProductItem.css';
-import useElementOnScreen from '../../Hooks/useElementOnScreen';
-import { Link } from 'react-router-dom';
-const ProductItem = ({ data }) => {
-  const [containerRef, hiddenClassName] = useElementOnScreen(
-    {
-      root: null,
-      rootMargin: '0px',
-      threshold: 1,
-    },
-    'hidden-product-item'
-  );
+const SingleProduct = () => {
+  const param = useParams();
+  const data = PRODUCTS.find(p => p.id === param.id);
   const { carts, dispatchCart } = useContext(CartContext);
   const added = carts.includes(data.id);
   const handleAdd = () => {
@@ -27,14 +20,12 @@ const ProductItem = ({ data }) => {
     }
   };
   return (
-    <div ref={containerRef} className={`card ${hiddenClassName}`}>
+    <div className="card">
       <div className="card-header">
         <img src={data.image} className="card-img" />
       </div>
       <div className="card-body">
-        <Link to={`/product/${data.id}`}>
-          <h3 className="card-title">{data.name}</h3>
-        </Link>
+        <h3 className="card-title">{data.name}</h3>
         <span className="card-sub">💎</span>
         <h4 className="card-ditails">{data.price}</h4>
         <Button handleClick={handleAdd} className="card-button">
@@ -55,4 +46,4 @@ const ProductItem = ({ data }) => {
   );
 };
 
-export default ProductItem;
+export default SingleProduct;

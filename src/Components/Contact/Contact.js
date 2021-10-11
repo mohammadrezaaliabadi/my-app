@@ -4,11 +4,7 @@ import Button from '../Button/Button';
 import Modal from '../Modal/Modal';
 import { useContext, useEffect } from 'react/cjs/react.development';
 import ThemeContext from '../../Context/ThemeContext';
-const validateEmail = email => {
-  var re =
-    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(String(email).toLowerCase());
-};
+import { validateEmail } from '../../utils/validation';
 const Contact = () => {
   const [name, setName] = useState('');
   const [subject, setSubject] = useState('');

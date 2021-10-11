@@ -15,7 +15,14 @@
   min-width: 275px;
   display: flex;
   flex-flow: column wrap;
+
+  transition: 0.4s;
 }
+.hidden-product-item {
+  opacity: 0;
+  background: none;
+}
+
 .card .card-header {
   display: flex;
   flex-flow: column wrap;

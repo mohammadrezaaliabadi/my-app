@@ -10,6 +10,7 @@ import Home from '../Home/Home';
 import { useState } from 'react';
 import ThemeContext from '../../Context/ThemeContext';
 import themes from '../../configs/themes';
+import SingleProduct from '../SingleProducts/SingleProduct';
 function App() {
   const [activeTheme, setActiveTheme] = useState('dark');
   return (
@@ -32,6 +33,9 @@ function App() {
               </Route>
               <Route path="/blogs">
                 <Blogs />
+              </Route>
+              <Route path="/product/:id">
+                <SingleProduct />
               </Route>
             </Switch>
           </Layout>

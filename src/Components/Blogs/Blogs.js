@@ -58,7 +58,7 @@ const Blogs = () => {
           blogs
             .slice(3 * (activePageNumber - 1), 3 * activePageNumber)
             .map(b => {
-              return <Blog blog={b} />;
+              return <Blog blog={b} key={b.id} />;
             })}
       </div>
       {blogs.length !== 0 && (

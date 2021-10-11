@@ -2,18 +2,18 @@ import React from 'react';
 import { useState } from 'react';
 import Button from '../Button/Button';
 import './Blog.css';
-const Blog = ({ blog }) => {
+const Blog = ({ blog, key }) => {
   const [count, setCount] = useState(0);
   const handleClickButton = () => {
     setCount(count + 1);
   };
 
   return (
-    <div className="blog">
+    <div className="blog" key={`blog-${key}`}>
       <h2 className="blog-title">{blog.title}</h2>
       <img className="blog-img" src={blog.image} alt="" srcset="" />
       <h3 className="blog-subject">
-        <span style={{ color: 'red' }}>♥</span> {count}
+        <span style={{ color: 'red' }}>♥</span> {count},{key}
       </h3>
       <p className="blog-description">{blog.content}</p>
       <Button className="btn-like" handleClick={handleClickButton}>

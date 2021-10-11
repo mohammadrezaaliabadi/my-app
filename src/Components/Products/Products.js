@@ -1,5 +1,6 @@
 import ProductItem from '../ProductItem/ProductItem';
 import './Products.css';
+
 const Products = props => {
   return (
     <div className={`cards `}>

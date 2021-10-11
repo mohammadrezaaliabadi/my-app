@@ -1,19 +1,29 @@
 import './Header.scss';
 import NavBar from '../NavBar/NavBar';
-import { useCallback, useReducer, useState } from 'react';
+import { useCallback } from 'react';
 import { useContext } from 'react/cjs/react.development';
 import ThemeContext from '../../Context/ThemeContext';
 import { useLocation } from 'react-router';
 import CartContext from '../../Context/CartContext';
 import { MdShoppingCart } from 'react-icons/md';
+import useElementOnScreen from '../../Hooks/useElementOnScreen';
+
 const Header = () => {
   const themeValues = useContext(ThemeContext);
   let { pathname } = useLocation();
   const { carts } = useContext(CartContext);
+  const [containerRef, hiddenClassName] = useElementOnScreen(
+    {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.15,
+    },
+    'hidden'
+  );
   let title = '';
   if (pathname === '/') title = 'Shop';
   if (pathname === '/about') title = 'About';
-  if (pathname === '/blog') title = 'Blog';
+  if (pathname === '/blogs') title = 'Blog';
   if (pathname === '/contact') title = 'Contact';
   if (pathname.includes('product')) title = 'Shop';
   const handleThemeCheckBox = useCallback(
@@ -26,6 +36,7 @@ const Header = () => {
     },
     [themeValues.theme]
   );
+
   return (
     <>
       <div className="header">
@@ -34,15 +45,16 @@ const Header = () => {
           <input onChange={handleThemeCheckBox} type="checkbox" />
           <span className="slider round" />
         </label>
-        <div className="Cart">
+        <div className="cart">
           <h4>{carts.length}</h4>
           <MdShoppingCart />
         </div>
       </div>
-
       {title !== 'Shop' && (
         <div className="header-container">
-          <h1 className="main-header">{title}</h1>
+          <h1 ref={containerRef} className={`main-header ${hiddenClassName}`}>
+            {title}
+          </h1>
         </div>
       )}
     </>

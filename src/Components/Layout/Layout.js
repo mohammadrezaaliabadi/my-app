@@ -8,7 +8,9 @@ import CartReducer from '../../reducers/CartReducer';
 import CartContext from '../../Context/CartContext';
 
 const Layout = ({ children, className }) => {
-  const [state, dispatchCart] = useReducer(CartReducer, { carts: [] });
+  let carts = JSON.parse(localStorage.getItem('carts'));
+
+  const [state, dispatchCart] = useReducer(CartReducer, { carts: carts || [] });
   const themeValues = useContext(ThemeContext);
   return (
     <CartContext.Provider
