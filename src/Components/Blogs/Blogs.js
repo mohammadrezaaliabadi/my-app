@@ -16,6 +16,8 @@ const Blogs = () => {
     );
     const posts = await responsePosts.json();
     setBlogs(posts);
+
+    //setBlogs(BLOGS);
     setLoading(() => false);
   };
   useEffect(loadPosts, []);
@@ -57,8 +59,8 @@ const Blogs = () => {
         {blogs.length !== 0 &&
           blogs
             .slice(3 * (activePageNumber - 1), 3 * activePageNumber)
-            .map(b => {
-              return <Blog blog={b} key={b.id} />;
+            .map((b, i) => {
+              return <Blog blog={b} key={`blog-${b.id}${i}`} />;
             })}
       </div>
       {blogs.length !== 0 && (
@@ -73,6 +75,7 @@ const Blogs = () => {
             <button
               onClick={handleClickOnPages.bind(this, index + 1)}
               className="page"
+              key={index}
             >
               {index + 1}
             </button>

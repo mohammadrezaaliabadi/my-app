@@ -5,7 +5,7 @@ const Products = props => {
   return (
     <div className={`cards `}>
       {props.data?.map(product => {
-        return <ProductItem data={product} />;
+        return <ProductItem data={product} key={product.id} />;
       })}
     </div>
   );
