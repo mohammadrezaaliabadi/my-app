@@ -9,13 +9,13 @@ import Blogs from '../Blogs/Blogs';
 import Home from '../Home/Home';
 import { useState } from 'react';
 import ThemeContext from '../../Context/ThemeContext';
-import themes from '../../configs/themes';
+import theme from '../../configs/theme';
 import SingleProduct from '../SingleProducts/SingleProduct';
 function App() {
   const [activeTheme, setActiveTheme] = useState('dark');
   return (
     <ThemeContext.Provider
-      value={{ theme: themes[activeTheme], setActiveTheme }}
+      value={{ theme: theme[activeTheme], setActiveTheme }}
     >
       <div className="App">
         <BrowserRouter>

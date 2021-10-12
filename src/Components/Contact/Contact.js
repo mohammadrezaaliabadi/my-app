@@ -1,8 +1,7 @@
 import './Contact.css';
-import { useRef, useState } from 'react';
+import { useRef, useState, useContext, useEffect } from 'react';
 import Button from '../Button/Button';
 import Modal from '../Modal/Modal';
-import { useContext, useEffect } from 'react/cjs/react.development';
 import ThemeContext from '../../Context/ThemeContext';
 import { validateEmail } from '../../utils/validation';
 const Contact = () => {

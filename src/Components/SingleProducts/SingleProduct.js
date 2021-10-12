@@ -22,7 +22,7 @@ const SingleProduct = () => {
   return (
     <div className="card">
       <div className="card-header">
-        <img src={data.image} className="card-img" />
+        <img src={data.image} alt={data.name} className="card-img" />
       </div>
       <div className="card-body">
         <h3 className="card-title">{data.name}</h3>

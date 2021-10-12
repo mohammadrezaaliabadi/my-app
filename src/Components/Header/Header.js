@@ -1,7 +1,6 @@
 import './Header.scss';
 import NavBar from '../NavBar/NavBar';
-import { useCallback } from 'react';
-import { useContext } from 'react/cjs/react.development';
+import { useCallback, useContext } from 'react';
 import ThemeContext from '../../Context/ThemeContext';
 import { useLocation } from 'react-router';
 import CartContext from '../../Context/CartContext';
@@ -9,9 +8,9 @@ import { MdShoppingCart } from 'react-icons/md';
 import useElementOnScreen from '../../Hooks/useElementOnScreen';
 
 const Header = () => {
-  const themeValues = useContext(ThemeContext);
-  let { pathname } = useLocation();
   const { carts } = useContext(CartContext);
+  const { theme, setActiveTheme } = useContext(ThemeContext);
+  let { pathname } = useLocation();
   const [containerRef, hiddenClassName] = useElementOnScreen(
     {
       root: null,
@@ -28,13 +27,13 @@ const Header = () => {
   if (pathname.includes('product')) title = 'Shop';
   const handleThemeCheckBox = useCallback(
     e => {
-      if (themeValues.theme.className === 'dark') {
-        themeValues.setActiveTheme('light');
-      } else if (themeValues.theme.className === 'light') {
-        themeValues.setActiveTheme('dark');
+      if (theme.className === 'dark') {
+        setActiveTheme('light');
+      } else if (theme.className === 'light') {
+        setActiveTheme('dark');
       }
     },
-    [themeValues.theme]
+    [theme, setActiveTheme]
   );
 
   return (

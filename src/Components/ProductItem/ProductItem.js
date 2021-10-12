@@ -29,7 +29,7 @@ const ProductItem = ({ data }) => {
   return (
     <div ref={containerRef} className={`card ${hiddenClassName}`}>
       <div className="card-header">
-        <img src={data.image} className="card-img" />
+        <img src={data.image} alt={data.name} className="card-img" />
       </div>
       <div className="card-body">
         <Link to={`/product/${data.id}`}>

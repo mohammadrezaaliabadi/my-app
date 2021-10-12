@@ -1,4 +1,4 @@
-const themes = {
+const theme = {
   light: {
     className: 'light',
     foreground: '#000000',
@@ -11,4 +11,4 @@ const themes = {
   },
 };
 
-export default themes;
+export default theme;

@@ -3,7 +3,6 @@ import Footer from './../Footer/Footer';
 import './Layout.css';
 import { useContext, useReducer } from 'react';
 import ThemeContext from '../../Context/ThemeContext';
-import themes from '../../configs/themes';
 import CartReducer from '../../reducers/CartReducer';
 import CartContext from '../../Context/CartContext';
 
