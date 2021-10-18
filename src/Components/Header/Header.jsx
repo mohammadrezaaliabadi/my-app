@@ -1,23 +1,24 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import './Header.scss';
-import NavBar from '../NavBar/NavBar';
-import { useCallback, useContext } from 'react';
-import ThemeContext from '../../Context/ThemeContext';
+import React, { useCallback, useContext } from 'react';
 import { useLocation } from 'react-router';
-import CartContext from '../../Context/CartContext';
 import { MdShoppingCart } from 'react-icons/md';
+import NavBar from '../NavBar/NavBar';
+import ThemeContext from '../../Context/ThemeContext';
+import CartContext from '../../Context/CartContext';
 import useElementOnScreen from '../../Hooks/useElementOnScreen';
 
 const Header = () => {
   const { carts } = useContext(CartContext);
   const { theme, setActiveTheme } = useContext(ThemeContext);
-  let { pathname } = useLocation();
+  const { pathname } = useLocation();
   const [containerRef, hiddenClassName] = useElementOnScreen(
     {
       root: null,
       rootMargin: '0px',
       threshold: 0.15,
     },
-    'hidden'
+    'hidden',
   );
   let title = '';
   if (pathname === '/') title = 'Shop';
@@ -26,14 +27,14 @@ const Header = () => {
   if (pathname === '/contact') title = 'Contact';
   if (pathname.includes('product')) title = 'Shop';
   const handleThemeCheckBox = useCallback(
-    e => {
+    () => {
       if (theme.className === 'dark') {
         setActiveTheme('light');
       } else if (theme.className === 'light') {
         setActiveTheme('dark');
       }
     },
-    [theme, setActiveTheme]
+    [theme, setActiveTheme],
   );
 
   return (

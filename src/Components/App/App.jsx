@@ -1,4 +1,5 @@
 import './App.css';
+import React, { useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Layout from '../Layout/Layout';
 import PORODUCTS from './PRODUCTS.json';
@@ -7,10 +8,10 @@ import About from '../About/About';
 import Contact from '../Contact/Contact';
 import Blogs from '../Blogs/Blogs';
 import Home from '../Home/Home';
-import { useState } from 'react';
 import ThemeContext from '../../Context/ThemeContext';
 import theme from '../../configs/theme';
 import SingleProduct from '../SingleProducts/SingleProduct';
+
 function App() {
   const [activeTheme, setActiveTheme] = useState('dark');
   return (

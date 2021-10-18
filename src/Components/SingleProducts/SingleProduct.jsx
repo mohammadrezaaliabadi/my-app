@@ -1,12 +1,13 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { MdAdd, MdRemoveShoppingCart } from 'react-icons/md';
 import { useParams } from 'react-router-dom';
 import CartContext from '../../Context/CartContext';
 import PRODUCTS from '../App/PRODUCTS.json';
 import Button from '../Button/Button';
+
 const SingleProduct = () => {
   const param = useParams();
-  const data = PRODUCTS.find(p => p.id === param.id);
+  const data = PRODUCTS.find((p) => p.id === param.id);
   const { carts, dispatchCart } = useContext(CartContext);
   const added = carts.includes(data.id);
   const handleAdd = () => {

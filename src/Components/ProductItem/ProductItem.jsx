@@ -1,10 +1,12 @@
-import { useContext } from 'react';
-import CartContext from '../../Context/CartContext';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { MdAdd, MdRemoveShoppingCart } from 'react-icons/md';
+import CartContext from '../../Context/CartContext';
 import Button from '../Button/Button';
 import './ProductItem.css';
 import useElementOnScreen from '../../Hooks/useElementOnScreen';
-import { Link } from 'react-router-dom';
+import { PRODUCTS_RELATIVE_PATH_IMAGE } from '../../configs/general';
+
 const ProductItem = ({ data }) => {
   const [containerRef, hiddenClassName] = useElementOnScreen(
     {
@@ -12,7 +14,7 @@ const ProductItem = ({ data }) => {
       rootMargin: '0px',
       threshold: 1,
     },
-    'hidden-product-item'
+    'hidden-product-item',
   );
   const { carts, dispatchCart } = useContext(CartContext);
   const added = carts.includes(data.id);
@@ -29,7 +31,11 @@ const ProductItem = ({ data }) => {
   return (
     <div ref={containerRef} className={`card ${hiddenClassName}`}>
       <div className="card-header">
-        <img src={data.image} alt={data.name} className="card-img" />
+        <img
+          srcSet={`${PRODUCTS_RELATIVE_PATH_IMAGE}${data.image}`}
+          alt={data.name}
+          className="card-img"
+        />
       </div>
       <div className="card-body">
         <Link to={`/product/${data.id}`}>

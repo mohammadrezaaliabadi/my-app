@@ -11,8 +11,8 @@ const CartReducer = (state, action) => {
     case 'REMOVE_FROM_CART':
       newCarts = state.carts;
       newCarts.splice(
-        state.carts.findIndex(cartId => cartId === action.id),
-        1
+        state.carts.findIndex((cartId) => cartId === action.id),
+        1,
       );
       localStorage.setItem('carts', JSON.stringify(newCarts));
       return {
@@ -22,6 +22,7 @@ const CartReducer = (state, action) => {
     default:
       break;
   }
+  return null;
 };
 
 export default CartReducer;
