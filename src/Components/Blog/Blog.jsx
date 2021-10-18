@@ -1,7 +1,8 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import Button from '../Button/Button';
 import './Blog.css';
+
 const Blog = ({ blog }) => {
   const [count, setCount] = useState(0);
   const handleClickButton = () => {
@@ -13,7 +14,8 @@ const Blog = ({ blog }) => {
       <h2 className="blog-title">{blog.title}</h2>
       <img className="blog-img" srcSet={blog.image} alt="" />
       <h3 className="blog-subject">
-        <span style={{ color: 'red' }}>♥</span> {count}
+        <span style={{ color: 'red' }}>♥</span>
+        {count}
       </h3>
       <p className="blog-description">{blog.content}</p>
       <Button className="btn-like" handleClick={handleClickButton}>
@@ -23,6 +25,9 @@ const Blog = ({ blog }) => {
   );
 };
 
+Blog.prototype = {
+  blog: PropTypes.string.isRequired,
+};
 export default Blog;
 // class Blog2 extends React.Component {
 //   constructor(props) {
