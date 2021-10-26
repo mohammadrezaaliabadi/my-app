@@ -6,6 +6,7 @@
   align-items: center;
   background-position: center;
   background-repeat: no-repeat;
+  transition: 0.4s ease-in-out;
 }
 .home-header {
   background: linear-gradient(
@@ -22,4 +23,5 @@
   color: #fff;
   background: rgba(0, 0, 0, 0.4);
   padding: 1rem;
+  position: relative;
 }

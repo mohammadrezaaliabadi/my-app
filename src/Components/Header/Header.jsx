@@ -1,15 +1,15 @@
+/* eslint-disable comma-dangle */
 /* eslint-disable import/no-extraneous-dependencies */
 import './Header.scss';
 import React, { useCallback, useContext } from 'react';
 import { useLocation } from 'react-router';
-import { MdShoppingCart } from 'react-icons/md';
 import NavBar from '../NavBar/NavBar';
 import ThemeContext from '../../Context/ThemeContext';
-import CartContext from '../../Context/CartContext';
 import useElementOnScreen from '../../Hooks/useElementOnScreen';
+import MUISwitch from '../MUISwitch/MUISwitch';
+import CartMenu from '../CartMenu/CartMenu';
 
 const Header = () => {
-  const { carts } = useContext(CartContext);
   const { theme, setActiveTheme } = useContext(ThemeContext);
   const { pathname } = useLocation();
   const [containerRef, hiddenClassName] = useElementOnScreen(
@@ -18,7 +18,7 @@ const Header = () => {
       rootMargin: '0px',
       threshold: 0.15,
     },
-    'hidden',
+    'hidden'
   );
   let title = '';
   if (pathname === '/') title = 'Shop';
@@ -26,29 +26,20 @@ const Header = () => {
   if (pathname === '/blogs') title = 'Blog';
   if (pathname === '/contact') title = 'Contact';
   if (pathname.includes('product')) title = 'Shop';
-  const handleThemeCheckBox = useCallback(
-    () => {
-      if (theme.className === 'dark') {
-        setActiveTheme('light');
-      } else if (theme.className === 'light') {
-        setActiveTheme('dark');
-      }
-    },
-    [theme, setActiveTheme],
-  );
+  const handleThemeCheckBox = useCallback(() => {
+    if (theme.className === 'dark') {
+      setActiveTheme('light');
+    } else if (theme.className === 'light') {
+      setActiveTheme('dark');
+    }
+  }, [theme, setActiveTheme]);
 
   return (
     <>
       <div className="header">
         <NavBar />
-        <label className="switch">
-          <input onChange={handleThemeCheckBox} type="checkbox" />
-          <span className="slider round" />
-        </label>
-        <div className="cart">
-          <h4>{carts.length}</h4>
-          <MdShoppingCart />
-        </div>
+        <MUISwitch onChange={handleThemeCheckBox} defaultChecked />
+        <CartMenu />
       </div>
       {title !== 'Shop' && (
         <div className="header-container">

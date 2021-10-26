@@ -1,11 +1,23 @@
+/* eslint-disable import/named */
+/* eslint-disable comma-dangle */
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { MdAdd, MdRemoveShoppingCart } from 'react-icons/md';
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  CardActionArea,
+  CardActions,
+} from '@mui/material';
 import CartContext from '../../Context/CartContext';
 import Button from '../Button/Button';
 import './ProductItem.css';
 import useElementOnScreen from '../../Hooks/useElementOnScreen';
 import { PRODUCTS_RELATIVE_PATH_IMAGE } from '../../configs/general';
+import ThemeContext from '../../Context/ThemeContext';
+import { formatCurrency } from '../../utils/format';
 
 const ProductItem = ({ data }) => {
   const [containerRef, hiddenClassName] = useElementOnScreen(
@@ -14,8 +26,9 @@ const ProductItem = ({ data }) => {
       rootMargin: '0px',
       threshold: 1,
     },
-    'hidden-product-item',
+    'hidden-product-item'
   );
+  const themeValues = useContext(ThemeContext);
   const { carts, dispatchCart } = useContext(CartContext);
   const added = carts.includes(data.id);
   const handleAdd = () => {
@@ -29,20 +42,34 @@ const ProductItem = ({ data }) => {
     }
   };
   return (
-    <div ref={containerRef} className={`card ${hiddenClassName}`}>
-      <div className="card-header">
-        <img
-          srcSet={`${PRODUCTS_RELATIVE_PATH_IMAGE}${data.image}`}
-          alt={data.name}
-          className="card-img"
-        />
-      </div>
-      <div className="card-body">
-        <Link to={`/product/${data.id}`}>
-          <h3 className="card-title">{data.name}</h3>
-        </Link>
-        <span className="card-sub">💎</span>
-        <h4 className="card-ditails">{data.price}</h4>
+    <Card
+      ref={containerRef}
+      className={`card ${hiddenClassName} ${themeValues.theme.className}`}
+      sx={{ maxWidth: 345 }}
+    >
+      <Link
+        to={`/product/${data.id}`}
+        style={{ color: 'inherit', textDecoration: 'inherit' }}
+      >
+        <CardActionArea>
+          <CardMedia
+            component="img"
+            height="340"
+            image={`${PRODUCTS_RELATIVE_PATH_IMAGE}${data.image}`}
+            alt={data.name}
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div">
+              {data.name}
+            </Typography>
+            <Typography gutterBottom variant="h5" component="div">
+              {formatCurrency(data.price, 'en-us', 'USD')}
+              💎
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+      </Link>
+      <CardActions>
         <Button handleClick={handleAdd} className="card-button">
           {added ? (
             <>
@@ -56,8 +83,8 @@ const ProductItem = ({ data }) => {
             </>
           )}
         </Button>
-      </div>
-    </div>
+      </CardActions>
+    </Card>
   );
 };
 

@@ -1,9 +1,10 @@
+/* eslint-disable arrow-parens */
 import { useRef, useState, useEffect } from 'react';
 
 const useElementOnScreen = (options, className) => {
   const [hiddenClassName, setHiddenClassName] = useState(className);
   const containerRef = useRef(null);
-  const callbackFunction = (entries) => {
+  const callbackFunction = entries => {
     const [entry] = entries;
     if (!entry.isIntersecting) return;
     setHiddenClassName('');

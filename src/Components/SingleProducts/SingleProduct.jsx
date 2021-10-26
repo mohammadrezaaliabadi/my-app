@@ -1,13 +1,15 @@
+/* eslint-disable arrow-parens */
 import React, { useContext } from 'react';
 import { MdAdd, MdRemoveShoppingCart } from 'react-icons/md';
 import { useParams } from 'react-router-dom';
+import { PRODUCTS_RELATIVE_PATH_IMAGE } from '../../configs/general';
 import CartContext from '../../Context/CartContext';
 import PRODUCTS from '../App/PRODUCTS.json';
 import Button from '../Button/Button';
 
 const SingleProduct = () => {
   const param = useParams();
-  const data = PRODUCTS.find((p) => p.id === param.id);
+  const data = PRODUCTS.find(p => p.id === param.id);
   const { carts, dispatchCart } = useContext(CartContext);
   const added = carts.includes(data.id);
   const handleAdd = () => {
@@ -23,7 +25,11 @@ const SingleProduct = () => {
   return (
     <div className="card">
       <div className="card-header">
-        <img src={data.image} alt={data.name} className="card-img" />
+        <img
+          src={`${PRODUCTS_RELATIVE_PATH_IMAGE}${data.image}`}
+          alt={data.name}
+          className="card-img"
+        />
       </div>
       <div className="card-body">
         <h3 className="card-title">{data.name}</h3>

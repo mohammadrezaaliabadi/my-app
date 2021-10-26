@@ -1,9 +1,10 @@
+/* eslint-disable arrow-parens */
+/* eslint-disable indent */
+/* eslint-disable object-curly-newline */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-unused-vars */
 import './Contact.css';
-import React, {
-  useRef, useState, useContext, useEffect,
-} from 'react';
+import React, { useRef, useState, useContext, useEffect } from 'react';
 import Button from '../Button/Button';
 import Modal from '../Modal/Modal';
 import ThemeContext from '../../Context/ThemeContext';
@@ -20,10 +21,10 @@ const Contact = () => {
   const inputNameRef = useRef(null);
 
   const themeValues = useContext(ThemeContext);
-  const handleChangeInputName = (event) => {
+  const handleChangeInputName = event => {
     setName(event.target.value);
   };
-  const handleChangeInputEmail = (event) => {
+  const handleChangeInputEmail = event => {
     if (!validateEmail(event.target.value)) {
       errors.email = true;
     } else {
@@ -31,16 +32,15 @@ const Contact = () => {
     }
     setEmail(event.target.value);
   };
-  const handleChangeInputSubject = (event) => {
+  const handleChangeInputSubject = event => {
     setSubject(event.target.value);
   };
 
-  const handleChangeInputDescribtion = (event) => {
+  const handleChangeInputDescribtion = event => {
     setDescription(event.target.value);
   };
 
   const handleSubmit = () => {
-    // console.log(name, subject, email, description);
     if (errors.email === false && name && subject && description) {
       setClassNameModal('');
     }
@@ -55,7 +55,11 @@ const Contact = () => {
   return (
     <>
       <div className={`contact ${themeValues.theme.className}`}>
-        <img className="contact-img" src={`${PRODUCTS_RELATIVE_PATH_IMAGE}a.png`} alt="prof" />
+        <img
+          className="contact-img"
+          src={`${PRODUCTS_RELATIVE_PATH_IMAGE}a.png`}
+          alt="prof"
+        />
         <div className="contact-title">Send message For me😉</div>
         <div className="contact-group">
           <input
@@ -95,8 +99,8 @@ const Contact = () => {
               errors.email
                 ? 'error'
                 : errors.email === undefined
-                  ? ''
-                  : 'correct'
+                ? ''
+                : 'correct'
             }`}
             htmlFor="email"
           >

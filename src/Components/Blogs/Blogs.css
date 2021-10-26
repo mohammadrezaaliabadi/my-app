@@ -3,6 +3,13 @@
   flex-flow: row wrap;
   justify-content: center;
 }
+
+.blog__pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0rem;
+}
 .blog-btn-container {
   display: flex;
   justify-content: center;

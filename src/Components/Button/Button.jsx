@@ -1,13 +1,12 @@
 import './Button.css';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Button as Btn } from '@mui/material';
 
-const Button = ({
-  children, handleClick = () => {}, className,
-}) => (
-  <button type="button" onClick={handleClick} className={`btn ${className}`}>
+const Button = ({ children, handleClick = () => {}, className }) => (
+  <Btn variant="contained" className={className} onClick={handleClick}>
     {children}
-  </button>
+  </Btn>
 );
 
 Button.prototype = {
